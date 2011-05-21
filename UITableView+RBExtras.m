@@ -1,9 +1,17 @@
 //
-//  UITableView+RBExtras.m
-//  StatCollector
+// Copyright 2011 Robert Brown
 //
-//  Created by Robert Brown on 5/6/11.
-//  Copyright 2011 Robert Brown. All rights reserved.
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 //
 
 #import "UITableView+RBExtras.h"
@@ -13,6 +21,7 @@
 
 @implementation UITableView (RBExtras)
 
+// Modified from Three20
 - (void)scrollToFirstRowAnimated:(BOOL)animated {
     
     NSInteger sectionCount = [self numberOfSections];
@@ -35,6 +44,7 @@
     }
 }
 
+// Modified from Three20
 - (void)scrollToLastRowAnimated:(BOOL)animated {
     
     NSInteger sectionCount = [self numberOfSections];
@@ -57,6 +67,7 @@
     }
 }
 
+// From Three20
 - (void)scrollFirstResponderIntoViewAnimated:(BOOL)animated {
     
     UIView * responder = [[self window] findFirstResponder];

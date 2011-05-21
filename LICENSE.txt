@@ -13,16 +13,3 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-
-#import <Foundation/Foundation.h>
-
-
-@interface UIApplication (RBExtras)
-
-/**
- * Convenience method that returns the app delegate. This is much shorter than
- * using [[UIApplication sharedApplication] delegate].
- */
-+ (id<UIApplicationDelegate>)appDelegate;
-
-@end
