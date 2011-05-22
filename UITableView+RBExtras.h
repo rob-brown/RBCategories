@@ -17,7 +17,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface UITableView (RBExtras)
+@interface UITableView (TTCategory)
 
 /**
  * Scrolls to the first row of a table view with or without animation.
@@ -40,6 +40,11 @@
  * @param animated Whether or not to animate the scroll.
  */
 - (void)scrollFirstResponderIntoViewAnimated:(BOOL)animated;
+
+@end
+
+
+@interface UITableView (RBExtras)
 
 /**
  * Removes the selection highlight from the currently highlighted row.

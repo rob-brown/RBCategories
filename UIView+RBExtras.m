@@ -1,5 +1,5 @@
 //
-// Copyright 2011 Robert Brown
+// Modifications Copyright 2011 Robert Brown
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 #import "UIView+RBExtras.h"
 
 
-@implementation UIView (RBExtras)
+@implementation UIView (TTCategory)
 
 // Modified from Three20
 - (UIView *)findFirstResponder {

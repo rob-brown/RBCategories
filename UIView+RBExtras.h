@@ -19,7 +19,7 @@
 /**
  * Category borrowed from Three20
  */
-@interface UIView (RBExtras)
+@interface UIView (TTCategory)
 
 /**
  * Returns the view in the view hierarchy that is the first responder, if any. 

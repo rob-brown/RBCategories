@@ -19,7 +19,7 @@
 #import "UIView+RBExtras.h"
 
 
-@implementation UITableView (RBExtras)
+@implementation UITableView (TTCategory)
 
 // Modified from Three20
 - (void)scrollToFirstRowAnimated:(BOOL)animated {
@@ -84,6 +84,11 @@
         }
     }
 }
+
+@end
+
+
+@implementation UITableView (RBExtras)
 
 - (void)deselectSelectedRowAnimated:(BOOL)animated {
     
