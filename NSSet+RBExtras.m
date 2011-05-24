@@ -1,5 +1,5 @@
 //
-// NSURL+RBExtras.h
+// NSSet+RBExtras.m
 //
 // Copyright (c) 2011 Robert Brown
 //
@@ -22,20 +22,9 @@
 // THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "NSSet+RBExtras.h"
 
 
-@interface NSURL (RBExtras)
-
-/**
- * Equality comparator for NSURLs. Works as expected. isEqual: on the other hand
- * doesn't seem to make proper comparisons.
- */
-- (BOOL) isEqualToURL:(NSURL *)otherURL;
-
-/**
- * Infers the URL's MIME type.
- */
-- (NSString *)MIMEType;
+@implementation NSSet (RBExtras)
 
 @end

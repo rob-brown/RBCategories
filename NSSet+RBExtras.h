@@ -1,5 +1,5 @@
 //
-// NSURL+RBExtras.h
+// NSSet+RBExtras.h
 //
 // Copyright (c) 2011 Robert Brown
 //
@@ -24,18 +24,14 @@
 
 #import <Foundation/Foundation.h>
 
-
-@interface NSURL (RBExtras)
-
-/**
- * Equality comparator for NSURLs. Works as expected. isEqual: on the other hand
- * doesn't seem to make proper comparisons.
+/** 
+ * Convenient typedef for declaring blocks for enumerating sets.
+ *
+ * Template Example: 
+ * NSSetEnumerationBlock enumBlock = ^(id obj, BOOL * stop) { ... }
  */
-- (BOOL) isEqualToURL:(NSURL *)otherURL;
+typedef void(^NSSetEnumerationBlock)(id obj, BOOL * stop);
 
-/**
- * Infers the URL's MIME type.
- */
-- (NSString *)MIMEType;
+@interface NSSet (RBExtras)
 
 @end
