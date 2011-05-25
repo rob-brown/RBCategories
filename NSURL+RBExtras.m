@@ -58,7 +58,7 @@ static NSDictionary * MIMEDict = nil;
         // There are probably values missed, but this is a good start.
         // A few more have been added that weren't included on the original list.
         MIMEDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                    // Key      // Value",
+                    // Key      // Value
                     @"",        @"application/octet-stream",
                     @"323",     @"text/h323",
                     @"acx",     @"application/internet-property-stream",
