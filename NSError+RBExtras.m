@@ -23,6 +23,7 @@
 //
 
 #import "NSError+RBExtras.h"
+#import <CoreData/CoreData.h>
 
 // Error Domains
 NSString * const RBErrorDomain = @"RBErrorDomain";
