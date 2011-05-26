@@ -22,7 +22,7 @@
 // THE SOFTWARE.
 //
 
-#import "NSManagedObject+Extras.h"
+#import "NSManagedObject+RBExtras.h"
 
 
 @implementation NSManagedObject (RBExtras)
