@@ -3,6 +3,9 @@
 ##Summary
 These are Objective-C categories that I have found useful while developing. Most I have developed on my own. The rest I have borrowed from others (mostly Three20) and modified for different reasons. These reasons include, but are not limited to, fixing bugs in the original category, extending category capability, reorganizing, making them more generic, and/or conforming to my coding style. The original authors have been attributed in the source files. Furthermore, their original licenses, if any, are included. 
 
+##Dependencies
+`NSError+RBExtras` and `NSManagedObject+RBExtras` require `CoreData.framework`.
+
 ##License
 
 `RBCategories` is licensed under the MIT license, which is reproduced in its entirety here:
