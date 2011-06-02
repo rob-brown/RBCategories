@@ -16,6 +16,14 @@
 
 #import <Foundation/Foundation.h>
 
+@interface UIView (RBExtras)
+
+- (void)setWidth:(CGFloat)width;
+
+- (void)setHeight:(CGFloat)height;
+
+@end
+
 /**
  * Category borrowed from Three20
  */

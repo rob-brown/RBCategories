@@ -8,9 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@class CLLocation;
 
 @interface NSString (RBExtras)
 
 + (NSString *)stringWithError:(NSError *)error;
+
++ (NSString *)stringWithLocation:(CLLocation *)location;
+
++ (NSString *)stringWithLatitude:(double)latitude longitude:(double)longitude;
+
+- (NSString *)stringByRemovingCharactersInString:(NSString *)characters;
 
 @end

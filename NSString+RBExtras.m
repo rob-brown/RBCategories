@@ -6,10 +6,23 @@
 //  Copyright 2011 Robert Brown. All rights reserved.
 //
 
+#import <CoreLocation/CoreLocation.h>
+
 #import "NSString+RBExtras.h"
 
 
 @implementation NSString (RBExtras)
+
++ (NSString *)stringWithException:(NSException *)exception {
+    
+    return [NSString stringWithFormat:
+            @"EXCEPTION:\n Name: %@\n Reason: %@\n User Info: %@\n Stack Return Addresses: %@\n Stack Symbols: %@\n", 
+            [exception name],
+            [exception reason],
+            [exception userInfo],
+            [exception callStackReturnAddresses],
+            [exception callStackSymbols]];
+}
 
 + (NSString *)stringWithError:(NSError *)error {
     
@@ -21,6 +34,37 @@
             [error localizedFailureReason], 
             [error recoveryAttempter], 
             [error userInfo]];
+}
+
++ (NSString *)stringWithLocation:(CLLocation *)location {
+    
+    CLLocationCoordinate2D coord = [location coordinate];
+    
+    return [self stringWithLatitude:coord.latitude
+                          longitude:coord.longitude];
+}
+
++ (NSString *)stringWithLatitude:(double)latitude longitude:(double)longitude {
+    
+    return [NSString stringWithFormat:@"%0.2f˚ %0.2f˚", latitude, longitude];
+}
+
+- (NSString *)stringByRemovingCharactersInString:(NSString *)characters {
+    
+    NSString * result = [[self copy] autorelease];
+    
+    // Removes the designated characters one-by-one.
+    for (NSUInteger i = 0; i < [characters length]; i++) {
+        
+        // Grabs the character at the index.
+        NSString * character = [characters substringWithRange:NSMakeRange(i, 1)];
+        
+        // Removes the character from the string.
+        result = [result stringByReplacingOccurrencesOfString:character
+                                                   withString:@""];
+    }
+    
+    return result;
 }
 
 @end
