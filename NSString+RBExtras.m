@@ -67,4 +67,17 @@
     return result;
 }
 
++ (NSString *)pathWithComponentsRelativeToDocumentsDirectory:(NSArray *)components {
+    
+    // Finds the documents directory.
+    NSArray * docDirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString * docDir = [docDirs lastObject];
+    
+    // Inserts the documents directory to the begining of the components.
+    NSMutableArray * alteredComponents = [[components mutableCopy] autorelease];
+    [alteredComponents insertObject:docDir atIndex:0];
+    
+    return [NSString pathWithComponents:alteredComponents];
+}
+
 @end
