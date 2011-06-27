@@ -34,4 +34,6 @@ typedef void(^NSArrayEnumerationBlock)(id obj, NSUInteger idx, BOOL * stop);
 
 @interface NSArray (RBExtras)
 
+- (id)firstObject;
+
 @end

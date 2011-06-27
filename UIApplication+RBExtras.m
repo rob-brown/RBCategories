@@ -23,6 +23,7 @@
 //
 
 #import "UIApplication+RBExtras.h"
+#import "UIWindow+RBExtras.h"
 
 
 @implementation UIApplication (RBExtras)
@@ -30,6 +31,10 @@
 + (id<UIApplicationDelegate>)appDelegate {
     
     return [[self sharedApplication] delegate];
+}
+
++ (UINavigationController *)topNavController {
+    return [[[self sharedApplication] keyWindow] topNavController];
 }
 
 @end

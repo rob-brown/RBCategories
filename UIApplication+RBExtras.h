@@ -33,4 +33,11 @@
  */
 + (id<UIApplicationDelegate>)appDelegate;
 
+/**
+ * Returns the application's top-most navigation controller.
+ *
+ * @return The top-most navigation controller.
+ */
++ (UINavigationController *)topNavController;
+
 @end

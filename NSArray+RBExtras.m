@@ -27,4 +27,8 @@
 
 @implementation NSArray (RBExtras)
 
+- (id)firstObject {
+    return [self objectAtIndex:0];
+}
+
 @end
