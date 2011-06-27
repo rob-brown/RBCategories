@@ -34,6 +34,9 @@ typedef void(^NSArrayEnumerationBlock)(id obj, NSUInteger idx, BOOL * stop);
 
 @interface NSArray (RBExtras)
 
+/**
+ * Returns the first object in the array. If the array is empty, returns nil.
+ */
 - (id)firstObject;
 
 @end
