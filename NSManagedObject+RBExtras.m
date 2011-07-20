@@ -57,4 +57,19 @@
     return [moc objectWithID:[self objectID]];
 }
 
++ (NSArray *)managedObjectIDsFromSet:(NSSet *)set {
+    return [self managedObjectIDsFromArray:[set allObjects]];
+}
+
++ (NSArray *)managedObjectIDsFromArray:(NSArray *)array {
+    
+    NSMutableArray * objIDs = [NSMutableArray array];
+    
+    for (NSManagedObject * obj in array) {
+        [objIDs addObject:[obj objectID]];
+    }
+    
+    return objIDs;
+}
+
 @end

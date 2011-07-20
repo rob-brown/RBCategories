@@ -59,11 +59,31 @@
 /**
  * The managed object loads itself into the given context and returns the new 
  * managed object that exists in the given MOC. This can be overriden by 
- * subclasses to also load required relationships in the MOC too. 
+ * subclasses to also load required relationships in the MOC too. NOTE: Make 
+ * sure that the managed object in the original context has been saved. 
+ * Otherwise, you won't see any unsaved changes with the returned object.
  *
  * @todo It would be nice if this would automatically discover the required 
  * relationships and load them in the MOC.
  */
 - (NSManagedObject *)loadIntoMOC:(NSManagedObjectContext *)moc;
+
+/**
+ * Given a set of NSManagedObjects, returns an array of their managed object IDs.
+ *
+ * @param set The set of NSManagedObjects to extract IDs from.
+ *
+ * @return An array of NSManagedObjectIDs.
+ */
++ (NSArray *)managedObjectIDsFromSet:(NSSet *)set;
+
+/**
+ * Given a array of NSManagedObjects, returns an array of their managed object IDs.
+ *
+ * @param array The array of NSManagedObjects to extract IDs from.
+ *
+ * @return An array of NSManagedObjectIDs.
+ */
++ (NSArray *)managedObjectIDsFromArray:(NSArray *)array;
 
 @end

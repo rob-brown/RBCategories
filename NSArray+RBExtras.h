@@ -39,4 +39,38 @@ typedef void(^NSArrayEnumerationBlock)(id obj, NSUInteger idx, BOOL * stop);
  */
 - (id)firstObject;
 
+/**
+ * Returns the second object in the array. If the array doesn't have a second 
+ * element, returns nil.
+ */
+- (id)secondObject;
+
+/**
+ * Returns the third object in the array. If the array doesn't have a second 
+ * element, returns nil.
+ */
+- (id)thirdObject;
+
+/**
+ * Returns the fourth object in the array. If the array doesn't have a second 
+ * element, returns nil.
+ */
+- (id)fourthObject;
+
+/**
+ * Returns the fifth object in the array. If the array doesn't have a second 
+ * element, returns nil.
+ */
+- (id)fifthObject;
+
+/**
+ * Returns an array of values which come from the key path being applied to 
+ * every element of the receiving array.
+ *
+ * @param keyPath The key path to apply to each element of the array.
+ *
+ * @return An array of values extracted from the receiving array..
+ */
+- (NSArray *)extractValuesForKeyPath:(NSString *)keyPath;
+
 @end

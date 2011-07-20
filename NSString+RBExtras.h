@@ -56,4 +56,6 @@
  */
 - (NSString *)MIMEType;
 
++ (NSString *)MIMETypeForExtension:(NSString *)extension;
+
 @end

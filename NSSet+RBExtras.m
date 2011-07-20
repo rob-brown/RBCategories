@@ -27,4 +27,16 @@
 
 @implementation NSSet (RBExtras)
 
+- (NSArray *)extractValuesForKeyPath:(NSString *)keyPath {
+    
+    NSMutableArray * results = [NSMutableArray array];
+    
+    for (id obj in self) {
+        
+        [results addObject:[obj valueForKeyPath:keyPath]];
+    }
+    
+    return results;
+}
+
 @end

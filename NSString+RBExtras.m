@@ -17,7 +17,7 @@ static NSDictionary * MIMEDict = nil;
 
 @interface NSString (RBPrivateExtras)
 
-- (NSDictionary *)MIMEDict;
++ (NSDictionary *)MIMEDict;
 
 @end
 
@@ -92,14 +92,21 @@ static NSDictionary * MIMEDict = nil;
 }
 
 - (NSString *)MIMEType {
-    
-    return [[self MIMEDict] valueForKey:[[self pathExtension] lowercaseString]];
+    return [[self class] MIMETypeForExtension:[self pathExtension]];
 }
 
-- (NSDictionary *)MIMEDict {
++ (NSString *)MIMETypeForExtension:(NSString *)extension {
+    return [[self MIMEDict] valueForKey:[extension lowercaseString]];
+}
+
++ (NSDictionary *)MIMEDict {
     
     // Lazy loads the MIME type dictionary.
     if (!MIMEDict) {
+        
+        // ???: Should I have these return an array of MIME types? The first element would be the preferred MIME type.
+        
+        // ???: Should I have a couple methods that return the MIME media type name and the MIME subtype name?
         
         // Values from http://www.w3schools.com/media/media_mimeref.asp
         // There are probably values missed, but this is a good start.
@@ -175,6 +182,7 @@ static NSDictionary * MIMEDict = nil;
                     @"jpeg",    @"image/jpeg",
                     @"jpg",     @"image/jpeg",
                     @"js",      @"application/x-javascript",
+                    @"json",    @"application/json",   // According to RFC 4627  // Also application/x-javascript text/javascript text/x-javascript text/x-json
                     @"latex",   @"application/x-latex",
                     @"lha",     @"application/octet-stream",
                     @"lsf",     @"video/x-la-asf",
@@ -294,6 +302,7 @@ static NSDictionary * MIMEDict = nil;
                     @"xlsx",    @"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                     @"xlt",     @"application/vnd.ms-excel",
                     @"xlw",     @"application/vnd.ms-excel",
+                    @"xml",     @"text/xml",   // According to RFC 3023   // Also application/xml
                     @"xof",     @"x-world/x-vrml",
                     @"xpm",     @"image/x-xpixmap",
                     @"xwd",     @"image/x-xwindowdump",

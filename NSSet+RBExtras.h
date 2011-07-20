@@ -34,4 +34,6 @@ typedef void(^NSSetEnumerationBlock)(id obj, BOOL * stop);
 
 @interface NSSet (RBExtras)
 
+- (NSArray *)extractValuesForKeyPath:(NSString *)keyPath;
+
 @end

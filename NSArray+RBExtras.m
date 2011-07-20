@@ -28,11 +28,42 @@
 @implementation NSArray (RBExtras)
 
 - (id)firstObject {
+    return [self count] > 0 ? [self objectAtIndex:0] : nil;
+}
+
+- (id)secondObject {
+    return [self count] > 1 ? [self objectAtIndex:1] : nil;
+}
+
+- (id)thirdObject {
+    return [self count] > 2 ? [self objectAtIndex:2] : nil;
+}
+
+- (id)fourthObject {
+    return [self count] > 3 ? [self objectAtIndex:3] : nil;
+}
+
+- (id)fifthObject {
+    return [self count] > 4 ? [self objectAtIndex:4] : nil;
+}
+
+- (NSArray *)extractValuesForKeyPath:(NSString *)keyPath {
     
-    if ([self count] > 0)
-        return [self objectAtIndex:0];
-    else 
-        return nil;
+    NSMutableArray * results = [NSMutableArray array];
+    
+    for (id obj in self) {
+        
+        id value = [obj valueForKeyPath:keyPath];
+        
+        if (!value) {
+            [results addObject:[NSNull null]];
+        }
+        else {
+            [results addObject:value];
+        }
+    }
+    
+    return results;
 }
 
 @end
