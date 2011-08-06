@@ -27,9 +27,50 @@
 
 #import <dispatch/dispatch.h>
 
+/**
+ * Guarantees that the given block will be safely and synchronously run on the 
+ * main thread. 
+ *
+ * @param block The block to run on the main thread.
+ */
+void dispatch_sync_safe_main(dispatch_block_t block);
+
+/**
+ * Guarantees that the given block will be safely and synchronously run on the 
+ * given queue. This is good for when you want to run code sychronously, but 
+ * have the possiblity of already being dispatched from the given queue. 
+ *
+ * @param block The block to run on the main thread.
+ */
+void dispatch_sync_safe(dispatch_queue_t queue, dispatch_block_t block);
+
+/**
+ * Convenience method for asynchronously dispatching to the main queue.
+ *
+ * @param block The block to asynchrously dispatch.
+ */
 void dispatch_async_main(dispatch_block_t block);
+
+/**
+ * Convenience method for asynchronously dispatching to the low priority queue.
+ *
+ * @param block The block to asynchrously dispatch.
+ */
 void dispatch_async_low(dispatch_block_t block);
+
+/**
+ * Convenience method for asynchronously dispatching to the default priority 
+ * queue.
+ *
+ * @param block The block to asynchrously dispatch.
+ */
 void dispatch_async_default(dispatch_block_t block);
+
+/**
+ * Convenience method for asynchronously dispatching to the high priority queue.
+ *
+ * @param block The block to asynchrously dispatch.
+ */
 void dispatch_async_high(dispatch_block_t block);
 
 #endif

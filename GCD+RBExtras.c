@@ -26,6 +26,20 @@
 
 #include "GCD+RBExtras.h"
 
+void dispatch_sync_safe_main(dispatch_block_t block) {
+    dispatch_sync_safe(dispatch_get_main_queue(), block);
+}
+
+void dispatch_sync_safe(dispatch_queue_t queue, dispatch_block_t block) {
+    
+    // If we're already on the given queue, just run the block.
+    if (dispatch_get_current_queue() == queue)
+        block();
+    // Otherwise, dispatch to the given queue.
+    else
+        dispatch_sync(queue, block);
+}
+
 void dispatch_async_main(dispatch_block_t block) {
     dispatch_async(dispatch_get_main_queue(), block);
 }
