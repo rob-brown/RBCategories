@@ -1,5 +1,5 @@
 //
-// NSURL+RBExtras.m
+// GCD+RBExtras.h
 //
 // Copyright (c) 2011 Robert Brown
 //
@@ -22,22 +22,14 @@
 // THE SOFTWARE.
 //
 
-#import "NSURL+RBExtras.h"
-#import "NSString+RBExtras.h"
+#ifndef AboutOne_GCD_RBExtras_h
+#define AboutOne_GCD_RBExtras_h
 
+#import <dispatch/dispatch.h>
 
-@implementation NSURL (RBExtras)
+void dispatch_async_main(dispatch_block_t block);
+void dispatch_async_low(dispatch_block_t block);
+void dispatch_async_default(dispatch_block_t block);
+void dispatch_async_high(dispatch_block_t block);
 
-// From http://vgable.com/blog/2009/04/22/nsurl-isequal-gotcha/
-- (BOOL) isEqualToURL:(NSURL *)otherURL {
-	return [[self absoluteURL] isEqual:[otherURL absoluteURL]] ||
-            ([self isFileURL] && [otherURL isFileURL] &&
-             ([[self path] isEqual:[otherURL path]]));
-}
-
-- (NSString *)MIMEType {
-    
-    return [[self absoluteURL] MIMEType];
-}
-
-@end
+#endif

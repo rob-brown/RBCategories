@@ -1,5 +1,5 @@
 //
-// NSURL+RBExtras.m
+// UITextField+RBExtras.m
 //
 // Copyright (c) 2011 Robert Brown
 //
@@ -22,22 +22,13 @@
 // THE SOFTWARE.
 //
 
-#import "NSURL+RBExtras.h"
-#import "NSString+RBExtras.h"
+#import "UITextField+RBExtras.h"
 
+@implementation UITextField (RBExtras)
 
-@implementation NSURL (RBExtras)
-
-// From http://vgable.com/blog/2009/04/22/nsurl-isequal-gotcha/
-- (BOOL) isEqualToURL:(NSURL *)otherURL {
-	return [[self absoluteURL] isEqual:[otherURL absoluteURL]] ||
-            ([self isFileURL] && [otherURL isFileURL] &&
-             ([[self path] isEqual:[otherURL path]]));
-}
-
-- (NSString *)MIMEType {
-    
-    return [[self absoluteURL] MIMEType];
+- (BOOL)isEmpty {
+    NSString * text = [self text];
+    return !text || [text length] == 0;
 }
 
 @end

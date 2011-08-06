@@ -34,6 +34,7 @@
     [copySet minusSet:otherSet];
     [otherSet minusSet:self];
     [self unionSet:copySet];
+    [copySet release];
 }
 
 - (NSMutableSet *) createSymmetricDifferenceSet:(NSMutableSet *)otherSet {
