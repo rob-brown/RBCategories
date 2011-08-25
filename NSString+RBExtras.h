@@ -12,6 +12,35 @@
 
 @interface NSString (RBExtras)
 
+/**
+ * Returns true if the string is nil or empty.
+ *
+ * @param string The string to check if it's empty.
+ */
++ (BOOL)isEmpty:(NSString *)string;
+
+/**
+ * If string is nil, then returns an empty string. Otherwise, returns the string 
+ * unaltered.
+ *
+ * @param string The string to convert from nil, if necessary.
+ *
+ * @return Empty string for nil, otherwise returns the input string.
+ */
++ (NSString *)convertNilString:(NSString *)string;
+
+/**
+ * Same as +convertNilString: except nil strings are returned as the input 
+ * string. This is included mostly for completeness, but it some situations you 
+ * may find it cleaner than using the ternary conditional.
+ * 
+ * @param string The string to convert from nil, if necessary.
+ * @param defaultStr The string to return if string is nil.
+ *
+ * @return defaultStr for nil, otherwise returns the input string.
+ */
++ (NSString *)convertNilString:(NSString *)string toDefault:(NSString *)defaultStr;
+
 //------------------------------------------------------------------------------
 // String creation methods.
 //------------------------------------------------------------------------------

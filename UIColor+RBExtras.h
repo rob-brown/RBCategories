@@ -1,5 +1,5 @@
 //
-// NSObject+RBExtras.h
+// UIColor+RBExtras.h
 //
 // Copyright (c) 2011 Robert Brown
 //
@@ -22,15 +22,12 @@
 // THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface NSObject (RBExtras)
+@interface UIColor (RBExtras)
 
-/**
- * Returns the root class.
- *
- * @return The root class.
- */
-+ (Class)rootClass;
++ (UIColor *)cloverColor;
+
++ (UIColor *)oceanColor;
 
 @end

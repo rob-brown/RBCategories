@@ -1,5 +1,5 @@
 //
-// NSObject+RBExtras.h
+// UIColor+RBExtras.m
 //
 // Copyright (c) 2011 Robert Brown
 //
@@ -22,15 +22,18 @@
 // THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "UIColor+RBExtras.h"
 
-@interface NSObject (RBExtras)
+@implementation UIColor (RBExtras)
 
-/**
- * Returns the root class.
- *
- * @return The root class.
- */
-+ (Class)rootClass;
+// TODO: Create the rest of the crayon box colors.
+
++ (UIColor *)cloverColor {
+    return [UIColor colorWithRed:0.0 green:0.5 blue:0.0 alpha:1.0];
+}
+
++ (UIColor *)oceanColor {
+    return [UIColor colorWithRed:0.0 green:0.25 blue:0.5 alpha:1.0];
+}
 
 @end

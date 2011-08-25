@@ -24,6 +24,20 @@ static NSDictionary * MIMEDict = nil;
 
 @implementation NSString (RBExtras)
 
++ (BOOL)isEmpty:(NSString *)string {
+    return (!string || ![string length]);
+}
+
++ (NSString *)convertNilString:(NSString *)string {
+    // This could call +convertNilString:toDefault:, but for the sake of 
+    // efficiency, is isn't. Not much is gained by such a change in this case.
+    return string ? string : @"";
+}
+
++ (NSString *)convertNilString:(NSString *)string toDefault:(NSString *)defaultStr {
+    return string ? string : defaultStr;
+}
+
 + (NSString *)stringWithException:(NSException *)exception {
     
     return [NSString stringWithFormat:

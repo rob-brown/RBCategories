@@ -25,7 +25,20 @@
 #ifndef AboutOne_GCD_RBExtras_h
 #define AboutOne_GCD_RBExtras_h
 
-#import <dispatch/dispatch.h>
+
+// Deadlock warnings may be turned on/off by defining or not defining 
+// DEADLOCK_WARNINGS. It's best to turn these warnings on in debug mode.
+#if defined(DEADLOCK_WARNINGS)
+
+// Issues a warning when a synchronous method is called from the main queue.
+// Put this macro in your sychronous methods that are not safe for the main queue.
+#define DEADLOCK_SYNC_WARNING() if (dispatch_get_current_queue() == dispatch_get_main_queue()) NSLog(@"WARNING: Deadlock possible. Calling sychronous method from main queue in method: %@ file: %s line: %d.", NSStringFromSelector(_cmd), __FILE__, __LINE__);
+
+#else
+#define DEADLOCK_SYNC_WARNING() 
+#endif
+
+#include <dispatch/dispatch.h>
 
 /**
  * Guarantees that the given block will be safely and synchronously run on the 
