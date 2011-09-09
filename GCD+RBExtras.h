@@ -25,6 +25,7 @@
 #ifndef AboutOne_GCD_RBExtras_h
 #define AboutOne_GCD_RBExtras_h
 
+#include <dispatch/dispatch.h>
 
 // Deadlock warnings may be turned on/off by defining or not defining 
 // DEADLOCK_WARNINGS. It's best to turn these warnings on in debug mode.
@@ -38,7 +39,7 @@
 #define DEADLOCK_SYNC_WARNING() 
 #endif
 
-#include <dispatch/dispatch.h>
+typedef void(^StrideBlock)(size_t idx);
 
 /**
  * Guarantees that the given block will be safely and synchronously run on the 
@@ -85,5 +86,19 @@ void dispatch_async_default(dispatch_block_t block);
  * @param block The block to asynchrously dispatch.
  */
 void dispatch_async_high(dispatch_block_t block);
+
+/**
+ * Convenience method for using the striding pattern. Runs the given block on 
+ * the given queue in parallel. The block will be run 'iterations' number of 
+ * times and 'stride' number of iterations will run per thread.
+ *
+ * @param stride The number of times to run 'block' per thread.
+ * @param iterations The total number of times to run 'block'.
+ * @param queue The queue to run the block on. This must be a concurrent queue 
+ * to take advantage of parallelization.
+ * @param block The block of code to run in parallel. Must be thread safe and 
+ * independent of other iterations. 
+ */
+void dispatch_stride(size_t stride, size_t iterations, dispatch_queue_t queue, StrideBlock block);
 
 #endif
