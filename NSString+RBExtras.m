@@ -76,7 +76,7 @@ static NSDictionary * MIMEDict = nil;
 
 - (NSString *)stringByRemovingCharactersInString:(NSString *)characters {
     
-    NSString * result = [[self copy] autorelease];
+    NSString * result = [self copy];
     
     // Removes the designated characters one-by-one.
     for (NSUInteger i = 0; i < [characters length]; i++) {
@@ -99,7 +99,7 @@ static NSDictionary * MIMEDict = nil;
     NSString * docDir = [docDirs lastObject];
     
     // Inserts the documents directory to the begining of the components.
-    NSMutableArray * alteredComponents = [[components mutableCopy] autorelease];
+    NSMutableArray * alteredComponents = [components mutableCopy];
     [alteredComponents insertObject:docDir atIndex:0];
     
     return [NSString pathWithComponents:alteredComponents];

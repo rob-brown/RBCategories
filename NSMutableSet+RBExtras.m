@@ -34,7 +34,6 @@
     [copySet minusSet:otherSet];
     [otherSet minusSet:self];
     [self unionSet:copySet];
-    [copySet release];
 }
 
 - (NSMutableSet *) createSymmetricDifferenceSet:(NSMutableSet *)otherSet {
@@ -45,7 +44,7 @@
     [otherSet minusSet:self];
     [copySet unionSet:otherSet];
     
-    return [copySet autorelease];
+    return copySet;
 }
 
 - (NSMutableSet *) createMinusSet:(NSMutableSet *)otherSet {
@@ -54,7 +53,7 @@
     
     [copySet minusSet:otherSet];
     
-    return  [copySet autorelease];
+    return  copySet;
 }
 
 - (NSMutableSet *) createIntersectionSet:(NSMutableSet *)otherSet {
@@ -63,7 +62,7 @@
     
     [copySet intersectSet:otherSet];
     
-    return  [copySet autorelease];
+    return  copySet;
 }
 
 - (NSMutableSet *) createUnionSet:(NSMutableSet *)otherSet {
@@ -72,7 +71,7 @@
     
     [copySet unionSet:otherSet];
     
-    return  [copySet autorelease];
+    return  copySet;
 }
 
 @end

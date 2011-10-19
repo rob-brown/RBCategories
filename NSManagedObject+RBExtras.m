@@ -49,7 +49,7 @@
     NSManagedObject * obj = [[self allocWithZone:zone] initWithEntity:entDesc 
                                        insertIntoManagedObjectContext:context];
     
-    return [obj autorelease];
+    return obj;
 }
 
 - (NSManagedObject *)loadIntoMOC:(NSManagedObjectContext *)moc {
