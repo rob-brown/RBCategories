@@ -34,6 +34,10 @@
         UITabBarController * tabBarController = (UITabBarController *)self;
         UIViewController * rootViewController = [tabBarController selectedViewController];
         
+        // If no tab is selected, then default to the first tab.
+        if (!rootViewController)
+            rootViewController = [[tabBarController viewControllers] objectAtIndex:0];
+        
         return [rootViewController topNavController];
     }
     else if ([self isKindOfClass:[UINavigationController class]]) {
