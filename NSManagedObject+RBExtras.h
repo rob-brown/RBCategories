@@ -86,4 +86,23 @@
  */
 + (NSArray *)managedObjectIDsFromArray:(NSArray *)array;
 
+/**
+ * Convenience method for creating an NSEntityDescription for a given MOC. 
+ *
+ * @param context The MOC to use when creating the entity description.
+ * 
+ * @return An NSEntityDescription for the given MOC. 
+ */
++ (NSEntityDescription *)entityForContext:(NSManagedObjectContext *)context;
+
+/**
+ * Convenience method for creating a basic fetch request with a given MOC. The 
+ * fetch request may be further customized after calling this method.
+ * 
+ * @param context The MOC to use when creating the fetch request.
+ *
+ * @return A basic fetch request with the given MOC
+ */
++ (NSFetchRequest *)fetchRequestForContext:(NSManagedObjectContext *)context;
+
 @end

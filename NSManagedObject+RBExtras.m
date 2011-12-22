@@ -43,6 +43,8 @@
 
 + (NSManagedObject *) createManagedObjectWithName:(NSString *)name inContext:(NSManagedObjectContext *)context withZone:(NSZone *)zone {
     
+    NSParameterAssert(name && context);
+    
     NSEntityDescription * entDesc = [NSEntityDescription entityForName:name
                                                 inManagedObjectContext:context];
     
@@ -53,7 +55,6 @@
 }
 
 - (NSManagedObject *)loadIntoMOC:(NSManagedObjectContext *)moc {
-    
     return [moc objectWithID:[self objectID]];
 }
 
@@ -70,6 +71,17 @@
     }
     
     return objIDs;
+}
+
++ (NSEntityDescription *)entityForContext:(NSManagedObjectContext *)context {
+    return [NSEntityDescription entityForName:NSStringFromClass([self class])
+                       inManagedObjectContext:context];
+}
+
++ (NSFetchRequest *)fetchRequestForContext:(NSManagedObjectContext *)context {
+    NSFetchRequest * request = [NSFetchRequest new];
+    [request setEntity:[self entityForContext:context]];
+    return request;
 }
 
 @end
