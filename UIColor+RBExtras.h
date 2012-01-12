@@ -26,6 +26,12 @@
 
 @interface UIColor (RBExtras)
 
+/// @return A random color with alpha of 1.0.
++ (UIColor *)randomColor;
+
+/// @return A random color with random alpha.
++ (UIColor *)randomColorAndAlpha;
+
 // Colors found in the Mac crayon box color picker.
 
 + (UIColor *)aluminumCrayonColor;

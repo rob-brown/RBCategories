@@ -812,4 +812,21 @@
     return [UIColor colorWithRed:0x9A/0xFF green:0xCD/0xFF blue:0x32 alpha:1.0];
 }
 
+
+#pragma mark - Miscellaneous colors
+
++ (UIColor *)randomColor {
+    return [UIColor colorWithRed:(CGFloat)((arc4random() % 1000) / 1000.0f)
+                           green:(CGFloat)((arc4random() % 1000) / 1000.0f)
+                            blue:(CGFloat)((arc4random() % 1000) / 1000.0f)
+                           alpha:1.0f];
+}
+
++ (UIColor *)randomColorAndAlpha {
+    return [UIColor colorWithRed:(CGFloat)((arc4random() % 1000) / 1000.0f)
+                           green:(CGFloat)((arc4random() % 1000) / 1000.0f)
+                            blue:(CGFloat)((arc4random() % 1000) / 1000.0f)
+                           alpha:(CGFloat)((arc4random() % 1000) / 1000.0f)];
+}
+
 @end
