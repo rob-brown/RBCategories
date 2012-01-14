@@ -27,21 +27,21 @@
 
 @implementation NSManagedObject (RBExtras)
 
-+ (NSManagedObject *) createManagedObjectInContext:(NSManagedObjectContext *)context {
++ (id)createManagedObjectInContext:(NSManagedObjectContext *)context {
     
     return [self createManagedObjectWithName:NSStringFromClass([self class]) 
                                    inContext:context
                                     withZone:nil];
 }
 
-+ (NSManagedObject *) createManagedObjectInContext:(NSManagedObjectContext *)context withZone:(NSZone *)zone {
++ (id)createManagedObjectInContext:(NSManagedObjectContext *)context withZone:(NSZone *)zone {
     
     return [self createManagedObjectWithName:NSStringFromClass([self class]) 
                                    inContext:context
                                     withZone:zone];
 }
 
-+ (NSManagedObject *) createManagedObjectWithName:(NSString *)name inContext:(NSManagedObjectContext *)context withZone:(NSZone *)zone {
++ (id)createManagedObjectWithName:(NSString *)name inContext:(NSManagedObjectContext *)context withZone:(NSZone *)zone {
     
     NSParameterAssert(name && context);
     
@@ -54,7 +54,7 @@
     return obj;
 }
 
-- (NSManagedObject *)loadIntoMOC:(NSManagedObjectContext *)moc {
+- (id)loadIntoMOC:(NSManagedObjectContext *)moc {
     return [moc objectWithID:[self objectID]];
 }
 

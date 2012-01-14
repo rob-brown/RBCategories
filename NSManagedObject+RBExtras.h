@@ -33,7 +33,7 @@
  *
  * @param context The context to create the managed object in.
  */
-+ (NSManagedObject *) createManagedObjectInContext:(NSManagedObjectContext *)context;
++ (id)createManagedObjectInContext:(NSManagedObjectContext *)context;
 
 /**
  * This isn't normally called directly. You probably want to use 
@@ -43,7 +43,7 @@
  * @param context The context to create the managed object in.
  * @param zone The zone to allocate the managed object in.
  */
-+ (NSManagedObject *) createManagedObjectInContext:(NSManagedObjectContext *)context withZone:(NSZone *)zone;
++ (id)createManagedObjectInContext:(NSManagedObjectContext *)context withZone:(NSZone *)zone;
 
 /**
  * This isn't normally called directly. You probably want to use 
@@ -54,7 +54,7 @@
  * @param context The context to create the managed object in.
  * @param zone The zone to allocate the managed object in.
  */
-+ (NSManagedObject *) createManagedObjectWithName:(NSString *)name inContext:(NSManagedObjectContext *)context withZone:(NSZone *)zone;
++ (id)createManagedObjectWithName:(NSString *)name inContext:(NSManagedObjectContext *)context withZone:(NSZone *)zone;
 
 /**
  * The managed object loads itself into the given context and returns the new 
@@ -66,7 +66,7 @@
  * @todo It would be nice if this would automatically discover the required 
  * relationships and load them in the MOC.
  */
-- (NSManagedObject *)loadIntoMOC:(NSManagedObjectContext *)moc;
+- (id)loadIntoMOC:(NSManagedObjectContext *)moc;
 
 /**
  * Given a set of NSManagedObjects, returns an array of their managed object IDs.
