@@ -1,5 +1,5 @@
 //
-// UIButton+RBExtras.h
+// UIBarButtonItem+RBExtras.m
 //
 // Copyright (c) 2011 Robert Brown
 //
@@ -22,11 +22,44 @@
 // THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import <objc/runtime.h>
 
-@interface UIButton (RBExtras)
+#import "UIBarButtonItem+RBExtras.h"
 
-/// A block that is run when the UIBarButtonItem is tapped.
-@property (nonatomic, copy) dispatch_block_t actionBlock;
+
+char * const UIBarButtonItemActionBlock = "UIBarButtonItemActionBlock";
+
+
+@implementation UIBarButtonItem (RBExtras)
+
+- (void)performActionBlock {
+    
+    dispatch_block_t block = self.actionBlock;
+    
+    if (block)
+        block();
+}
+
+- (dispatch_block_t)actionBlock {
+    return objc_getAssociatedObject(self, UIBarButtonItemActionBlock);
+}
+
+- (void)setActionBlock:(dispatch_block_t)actionBlock {
+    
+    if (actionBlock != self.actionBlock) {
+        [self willChangeValueForKey:@"actionBlock"];
+        
+        objc_setAssociatedObject(self, 
+                                 UIBarButtonItemActionBlock, 
+                                 actionBlock, 
+                                 OBJC_ASSOCIATION_COPY);
+        
+        // Sets up the action.
+        [self setTarget:self];
+        [self setAction:@selector(performActionBlock)];
+        
+        [self didChangeValueForKey:@"actionBlock"];
+    }
+}
 
 @end

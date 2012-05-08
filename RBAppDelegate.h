@@ -1,5 +1,5 @@
 //
-// UIButton+RBExtras.h
+// RBAppDelegate.h
 //
 // Copyright (c) 2011 Robert Brown
 //
@@ -24,9 +24,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIButton (RBExtras)
+/// A block type for handling tab bar controller customizations.
+typedef void(^RBTabBarCustomizationBlock)(UITabBarController * tabBarController);
 
-/// A block that is run when the UIBarButtonItem is tapped.
-@property (nonatomic, copy) dispatch_block_t actionBlock;
+
+@interface RBAppDelegate : UIResponder <UIApplicationDelegate>
+
+/**
+ * Sets up a tab-based app using an array of UIStoryboard objects. 
+ *
+ * @param tabs An array of UIStoryboard objects.
+ * @param block An optional block that allows the tab bar controller to be 
+ * customized.
+ */
+- (void)setUpTabBasedAppWithTabs:(NSArray *)tabs block:(RBTabBarCustomizationBlock)block;
 
 @end

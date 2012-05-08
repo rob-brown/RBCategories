@@ -1,5 +1,5 @@
 //
-// UIButton+RBExtras.h
+// UIBarButtonItem+RBExtras.h
 //
 // Copyright (c) 2011 Robert Brown
 //
@@ -24,7 +24,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIButton (RBExtras)
+@interface UIBarButtonItem (RBExtras)
 
 /// A block that is run when the UIBarButtonItem is tapped.
 @property (nonatomic, copy) dispatch_block_t actionBlock;

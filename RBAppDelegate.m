@@ -1,5 +1,5 @@
 //
-// UIButton+RBExtras.h
+// RBAppDelegate.m
 //
 // Copyright (c) 2011 Robert Brown
 //
@@ -22,11 +22,31 @@
 // THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import "RBAppDelegate.h"
+#import "UITabBarController+RBExtras.h"
 
-@interface UIButton (RBExtras)
 
-/// A block that is run when the UIBarButtonItem is tapped.
-@property (nonatomic, copy) dispatch_block_t actionBlock;
+@implementation RBAppDelegate
+
+@synthesize window = _window;
+
+- (void)setUpTabBasedAppWithTabs:(NSArray *)tabs block:(RBTabBarCustomizationBlock)block {
+    
+    NSAssert(tabs, @"No tabs given.");
+    NSAssert([tabs count] >= 2, @"Insufficient number of tabs.");
+    
+    // Sets up the tab bar controller.
+    UITabBarController * tabBarController = [UITabBarController tabBarControllerWithStoryboardTabs:tabs];
+    
+    // The block is called to allow customization of the tab bar controller.
+    if (block) block(tabBarController);
+    
+    // Sets up the window.
+    UIWindow * window = [UIWindow new];
+    [window setScreen:[UIScreen mainScreen]];
+    [window setRootViewController:tabBarController];
+    [window makeKeyAndVisible];
+    [self setWindow:window];
+}
 
 @end
