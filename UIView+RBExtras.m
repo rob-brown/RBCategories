@@ -81,7 +81,7 @@
     CGRect frame = [theLabel frame];
     CGSize size = [theLabel.text sizeWithFont:theLabel.font
                             constrainedToSize:CGSizeMake(frame.size.width, CGFLOAT_MAX)
-                                lineBreakMode:UILineBreakModeWordWrap];
+                                lineBreakMode:NSLineBreakByWordWrapping];
     
     CGFloat delta = size.height - frame.size.height;
     frame.size.height = size.height;

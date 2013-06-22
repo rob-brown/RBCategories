@@ -54,8 +54,8 @@
     }
     else if ([self isKindOfClass:[UIViewController class]]) {
         
-        if ([self modalViewController]) {
-            return [[self modalViewController] topNavController];
+        if ([self presentedViewController]) {
+            return [[self presentedViewController] topNavController];
         }
         else {
             return [self navigationController]; 
