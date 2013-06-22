@@ -120,60 +120,6 @@ dispatch_queue_get_label(dispatch_get_current_queue()));
 typedef void(^StrideBlock)(size_t idx);
 
 /**
- * Guarantees that the given block will be safely and synchronously run on the 
- * main thread. 
- *
- * @deprecated This function does not guarantee that it won't block. Consider 
- * the situation where you dispatch_sync_safe_main to queue A. Then 
- * dispatch_sync_safe_main to queue B. Finally, dispatch_sync_safe_main back to 
- * queue A. This will cause deadlock. Use dispatch_async_continue instead.
- *
- * @param block The block to run on the main thread.
- */
-void dispatch_sync_safe_main(dispatch_block_t block) __attribute__ ((deprecated));
-
-/**
- * Guarantees that the given block will be safely and synchronously run on the 
- * given queue. This is good for when you want to run code sychronously, but 
- * have the possiblity of already being dispatched from the given queue. 
- *
- * @deprecated This function does not guarantee that it won't block. Consider 
- * the situation where you dispatch_sync_safe to queue A. Then dispatch_sync_safe
- * to queue B. Finally, dispatch_sync_safe back to queue A. This will cause 
- * deadlock. Use dispatch_async_continue instead.
- * 
- * @param queue The queue to run the given block on.
- * @param block The block to run on the given queue.
- */
-void dispatch_sync_safe(dispatch_queue_t queue, dispatch_block_t block) __attribute__ ((deprecated));
-
-/**
- * Runs the given block on the main queue. Like dispatch_sync, this function may
- * block. The difference, however, is that this function will first check if 
- * execution is already on the main queue. This offers some extra deadlock 
- * protection.
- *
- * @deprecated This function does not guarantee that it won't block. Consider 
- * the situation where you dispatch_sync_safe_main to queue A. Then 
- * dispatch_sync_safe_main to queue B. Finally, dispatch_sync_safe_main back to 
- * queue A. This will cause deadlock. Use dispatch_async_continue instead.
- *
- * @param block The block to run on the main thread.
- */
-void dispatch_sync_checked_main(dispatch_block_t block);
-
-/**
- * Runs the given block on the given queue. Like dispatch_sync, this function 
- * may block. The difference, however, is that this function will first check if 
- * execution is already on the given queue. This offers some extra deadlock 
- * protection.
- *
- * @param queue The queue to run the given block on.
- * @param block The block to run on the given queue.
- */
-void dispatch_sync_checked(dispatch_queue_t queue, dispatch_block_t block);
-
-/**
  * Convenience method for asynchronously dispatching to the main queue.
  *
  * @param block The block to asynchrously dispatch. Must not be NULL.
@@ -215,20 +161,5 @@ void dispatch_async_high(dispatch_block_t block);
  * independent of other iterations. Must not be NULL.
  */
 void dispatch_stride(size_t stride, size_t iterations, dispatch_queue_t queue, StrideBlock block);
-
-/**
- * Runs asyncBlock on the given queue. After that block has run to completion,
- * then runs continueBlock on the caller's queue. This is a great replacement 
- * for dispatch_sync_safe. The basic idea is that it causes you to temporarily
- * jump to a queue and subsequently jump back to your original queue. This 
- * gives the same behavior as dispatch_sync but will never block. Furthermore,
- * your code keeps its synchrounous appearance.
- *
- * @param queue The queue to temporarily jump to. Must not be NULL.
- * @param asyncBlock The block to run on queue. Must not be NULL.
- * @param continueBlock The block to run on the caller's queue after completing
- * asyncBlock. May be NULL. If NULL, then this acts the same as dispatch_async.
- */
-void dispatch_async_continue(dispatch_queue_t queue, dispatch_block_t asyncBlock, dispatch_block_t continueBlock);
 
 #endif    // GCD_RBExtras_h

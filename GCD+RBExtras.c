@@ -28,28 +28,6 @@
 
 #include "GCD+RBExtras.h"
 
-void dispatch_sync_safe_main(dispatch_block_t block) {
-    dispatch_sync_checked(dispatch_get_main_queue(), block);
-}
-
-void dispatch_sync_safe(dispatch_queue_t queue, dispatch_block_t block) {
-    dispatch_sync_checked(queue, block);
-}
-
-void dispatch_sync_checked_main(dispatch_block_t block) {
-    dispatch_sync_checked(dispatch_get_main_queue(), block);
-}
-
-void dispatch_sync_checked(dispatch_queue_t queue, dispatch_block_t block) {
-    
-    // If we're already on the given queue, just run the block.
-    if (dispatch_get_current_queue() == queue)
-        block();
-    // Otherwise, dispatch to the given queue.
-    else
-        dispatch_sync(queue, block);
-}
-
 void dispatch_async_main(dispatch_block_t block) {
     dispatch_async(dispatch_get_main_queue(), block);
 }
@@ -84,28 +62,4 @@ void dispatch_stride(size_t stride, size_t iterations, dispatch_queue_t queue, S
     // Picks up any left over iterations.
     for (size_t i = iterations - (iterations % stride); i < iterations; i++)
         block(i);
-}
-
-void dispatch_async_continue(dispatch_queue_t queue, dispatch_block_t asyncBlock, dispatch_block_t continueBlock) {
-    
-    assert(queue && asyncBlock);
-    
-    // Grabs the current queue. 
-    dispatch_queue_t continueQueue = dispatch_get_current_queue();
-    dispatch_retain(continueQueue);
-    
-    // Temporarily jumps to the given queue.
-    dispatch_async(queue, ^{
-        
-        // Runs the first block on the given queue.
-        asyncBlock();
-        
-        // Jumps back to the caller's queue if a continue block is given.
-        if (continueBlock)
-            dispatch_async(continueQueue, continueBlock);
-        
-        // Releases the caller's queue. The above dispatch_async will retain the 
-        // queue as long as needed.
-        dispatch_release(continueQueue);
-    });
 }
