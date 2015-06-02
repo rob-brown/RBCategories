@@ -45,6 +45,7 @@
     UIWindow * window = [UIWindow new];
     [window setScreen:[UIScreen mainScreen]];
     [window setRootViewController:tabBarController];
+    [window setFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     [window makeKeyAndVisible];
     [self setWindow:window];
 }
